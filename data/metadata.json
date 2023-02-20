@@ -9,8 +9,8 @@
           "format": "JSON"
         },
         {
-          "name": "person_inputs",
-          "path": "/data/input/events/person/*",
+          "name": "persons_in_another_path",
+          "path": "/data/input/events/",
           "format": "JSON"
         }
       ],
