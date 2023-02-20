@@ -2,7 +2,7 @@ package transformation
 
 import extraction.MetadataContent
 import org.apache.spark.sql.{DataFrame, Row}
-import org.apache.spark.sql.functions.{arrays_zip, col, explode}
+import org.apache.spark.sql.functions.{arrays_zip, col, explode, lit}
 
 object FieldsValidation {
   final val instanceOfMetadata = MetadataContent
@@ -41,14 +41,14 @@ object FieldsValidation {
         .replace("not", "== ")
         .replace("Empty", "\"\"")
 
-      if (validation == "notNull") sourceContent.filter(col(column).isNull)
-      else sourceContent.where(s"$column $validationTransformed")
+      if (validation == "notNull") sourceContent.filter(col(column).isNull).withColumn("error", lit(s"$column is NULL"))
+      else sourceContent.where(s"$column $validationTransformed").withColumn("error", lit(s"$column doesn't meet the requirement of $validation"))
     }).reduce(_.union(_))
   }
 
   def applyDataValidations(metadataContentFlattened: DataFrame, sourceContent: DataFrame): (DataFrame, DataFrame) = {
     val validate_KO = getAffectedRowsByValidations(metadataContentFlattened, sourceContent)
-    val validate_OK = sourceContent.except(validate_KO)
+    val validate_OK = sourceContent.except(validate_KO.select("name","age", "office"))
       (validate_KO, validate_OK)
   }
 }

@@ -33,10 +33,6 @@ object DataSource {
       val path = row.getAs("path").toString.replace("WrappedArray(/", "").tail
       val name = row.getAs("name").toString
       val format = row.getAs("format").toString
-      println(path.last)
-      println(path)
-      println(name)
-      println(format.toLowerCase)
       if(path.last == '*') spark.read.option("multiline", value = true).option("innerSchema", value = true).format(format).load(path)
       else spark.read.option("multiline", value = true).option("innerSchema", value = true).format(format).load(path+name+"."+format.toLowerCase)
     })reduce(_.union(_))
