@@ -27,11 +27,12 @@ object Main {
     val validate_KO = validatedDataFrames._1
     var validate_OK = validatedDataFrames._2
 
+    println("-----VALIDATE_KO-----")
     validate_KO.show(false)
-    validate_OK.show(false)
 
     validate_OK = instanceOfFieldsTransformation.applyDataTransformations(metadataContentFlattened, validate_OK)
 
+    println("-----VALIDATE_OK-----")
     validate_OK.show(false)
 
     //---------------------------write output-------------------------------
