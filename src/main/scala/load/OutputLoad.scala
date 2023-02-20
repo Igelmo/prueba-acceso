@@ -36,8 +36,8 @@ object OutputLoad {
       val name = row.getAs("name").toString
       val format = row.getAs("format").toString
       val saveMode = row.getAs("saveMode").toString
-      if (name == "raw-ok") validate_OK.repartition(2).write.format(format).mode(saveMode).json(path + "/VALIDATE_OK")
-      if (name == "raw-ko") validate_KO.repartition(2).write.format(format).mode(saveMode).json(path + "/VALIDATE_KO")
+      if (name == "raw-ok") validate_OK.repartition(2).write.format(format).mode(saveMode).save(path + "/VALIDATE_OK")
+      if (name == "raw-ko") validate_KO.repartition(2).write.format(format).mode(saveMode).save(path + "/VALIDATE_KO")
     })
   }
 }
