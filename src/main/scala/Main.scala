@@ -19,7 +19,7 @@ object Main {
 
     //---------------------------read of source-------------------------------
 
-    val sourceContent = instanceOfDataSource.readSources(metadataContentFlattened)
+    val sourceContent = instanceOfDataSource.readInputToDataFrames(metadataContentFlattened)
 
     //---------------------------transform data-------------------------------
 
