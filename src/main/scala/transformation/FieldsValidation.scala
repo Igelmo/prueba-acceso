@@ -48,7 +48,7 @@ object FieldsValidation {
 
   def applyDataValidations(metadataContentFlattened: DataFrame, sourceContent: DataFrame): (DataFrame, DataFrame) = {
     val validate_KO = getAffectedRowsByValidations(metadataContentFlattened, sourceContent)
-    val validate_OK = sourceContent.except(validate_KO.select("name","age", "office"))
-      (validate_KO, validate_OK)
+    val validate_OK = sourceContent.except(validate_KO.select("age","name", "office"))
+    (validate_KO, validate_OK)
   }
 }
