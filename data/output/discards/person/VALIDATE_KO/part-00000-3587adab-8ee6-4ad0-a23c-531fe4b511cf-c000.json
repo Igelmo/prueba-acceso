@@ -1,4 +1,0 @@
-{"age":26,"name":"Ana","office":"","error":"office doesn't meet the requirement of notEmpty"}
-{"age":39,"name":"Xabier","office":"","error":"office doesn't meet the requirement of notEmpty"}
-{"name":"Monica","office":"OFFICE","error":"age is NULL"}
-{"name":"Miguel","office":"RIO","error":"age is NULL"}
