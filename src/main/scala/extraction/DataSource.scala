@@ -5,7 +5,7 @@ import org.apache.spark.sql.functions.{arrays_zip, explode}
 
 object DataSource {
   final val instanceOfMetadata = MetadataContent
-  val spark = SparkSession.active
+  val spark: SparkSession = SparkSession.active
 
   import spark.implicits._
 

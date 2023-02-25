@@ -6,7 +6,7 @@ import org.apache.spark.sql.functions.{current_timestamp, explode, lit}
 
 object FieldsTransformation {
   final val instanceOfMetadata = MetadataContent
-  val spark = SparkSession.active
+  val spark: SparkSession = SparkSession.active
 
   import spark.implicits._
 
