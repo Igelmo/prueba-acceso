@@ -10,7 +10,7 @@ object Main {
   private final val instanceOfFieldsValidation = FieldsValidation
   private final val instanceOfFieldsTransformation = FieldsTransformation
   private final val instanceOfOutputLoad = OutputLoad
-  def main(args: Array[String]) {
+  def main(args: Array[String]): Unit = {
 
     //---------------------------read of metadata-------------------------------
 
