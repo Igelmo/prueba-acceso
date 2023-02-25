@@ -1,11 +1,11 @@
 package extraction
 
-import org.apache.spark.sql.{DataFrame, Dataset, Row}
+import org.apache.spark.sql.{DataFrame, Dataset, Row, SparkSession}
 import org.apache.spark.sql.functions.{arrays_zip, explode}
 
 object DataSource {
   final val instanceOfMetadata = MetadataContent
-  val spark = instanceOfMetadata.getSparkSession
+  val spark = SparkSession.active
 
   import spark.implicits._
 

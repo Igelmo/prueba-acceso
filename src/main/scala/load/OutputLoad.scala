@@ -1,12 +1,12 @@
 package load
 
 import extraction.MetadataContent
-import org.apache.spark.sql.{DataFrame, Row}
+import org.apache.spark.sql.{DataFrame, Row, SparkSession}
 import org.apache.spark.sql.functions.{arrays_zip, explode}
 
 object OutputLoad {
   final val instanceOfMetadata = MetadataContent
-  val spark = instanceOfMetadata.getSparkSession
+  val spark = SparkSession.active
 
   import spark.implicits._
 
