@@ -19,8 +19,6 @@ object MetadataContent {
 
   private val spark: SparkSession = generateSparkSession
 
-  def getSparkSession: SparkSession = spark
-
   def generateMetadataContent(path: String): DataFrame = {
     spark.read.option("inferSchema", "true").option("multiline", value = true).json(path)
   }
