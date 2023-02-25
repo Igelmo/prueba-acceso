@@ -1,13 +1,10 @@
 package load
 
-import extraction.MetadataContent
 import org.apache.spark.sql.{DataFrame, Row, SparkSession}
 import org.apache.spark.sql.functions.{arrays_zip, explode}
 
 object OutputLoad {
-  final val instanceOfMetadata = MetadataContent
   val spark: SparkSession = SparkSession.active
-
   import spark.implicits._
 
   private def flattenSinks(metadataContentFlattened: DataFrame): DataFrame = {

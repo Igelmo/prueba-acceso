@@ -1,13 +1,10 @@
 package transformation
 
-import extraction.MetadataContent
 import org.apache.spark.sql.{DataFrame, Row, SparkSession}
 import org.apache.spark.sql.functions.{current_timestamp, explode, lit}
 
 object FieldsTransformation {
-  final val instanceOfMetadata = MetadataContent
   val spark: SparkSession = SparkSession.active
-
   import spark.implicits._
 
   private def getDataTransformations(metadataContentFlattened: DataFrame): List[Row] = {

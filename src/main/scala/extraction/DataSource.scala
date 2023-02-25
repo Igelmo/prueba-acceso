@@ -1,12 +1,10 @@
 package extraction
 
-import org.apache.spark.sql.{DataFrame, Dataset, Row, SparkSession}
+import org.apache.spark.sql.{DataFrame, Row, SparkSession}
 import org.apache.spark.sql.functions.{arrays_zip, explode}
 
 object DataSource {
-  final val instanceOfMetadata = MetadataContent
   val spark: SparkSession = SparkSession.active
-
   import spark.implicits._
 
   private def flattenSources(metadataContentFlattened: DataFrame): DataFrame = {
